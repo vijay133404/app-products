@@ -1,5 +1,6 @@
 class SuppliersController < ApplicationController
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /suppliers
   # GET /suppliers.json
@@ -62,7 +63,12 @@ class SuppliersController < ApplicationController
   end
 
   def active_product
-    byebug
+     supplier = Supplier.find(params[:Id])
+     if params[:inactive] = true && params[:active].nil?
+        @supplier = supplier.products.where(is_active: false)
+     else
+      @supplier = supplier.products.where(is_active: true)
+     end
   end
 
   private

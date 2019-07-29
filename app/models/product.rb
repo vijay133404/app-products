@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
 	has_many :product_suppliers, :dependent => :destroy
 	has_many :suppliers, :through => :product_suppliers
+	 resourcify
 	#accepts_nested_attributes_for :product_id ,:product_title,:supplier_id,:supplier_name,:price,:is_active,:category
 
 

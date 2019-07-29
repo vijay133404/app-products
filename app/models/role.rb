@@ -1,5 +1,6 @@
 class Role < ApplicationRecord
 has_and_belongs_to_many :users, :join_table => :users_roles
+ resourcify
 
 
 belongs_to :resource,
@@ -12,4 +13,5 @@ validates :resource_type,
           :allow_nil => true
 
 scopify
+
 end

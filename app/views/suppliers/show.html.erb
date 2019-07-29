@@ -20,21 +20,19 @@
                                   
 <script type="text/javascript">
 	function handleClick(cb) {
-		var id = <%=@supplier%>
-  if (cb.checked){
-    $.ajax({
-      url: '/suppliers/active_product',
-      type: 'GET',
-      data: {"inactive": cb.checked ,id}
-    });
-  }
-  else {
-  	$.ajax({
-      url: '/suppliers/active_product',
-      type: 'GET',
-      data: {"active": cb.checked }
-    });
-  }
+		if(cb.checked) {
+		     $.ajax({
+		      url: '/suppliers/active_product',
+		      type: 'GET',
+		      data: {"inactive": cb.checked ,Id: <%=@supplier.id%> }
+		    });
+		  }else{
+		     $.ajax({
+		      url: '/suppliers/active_product',
+		      type: 'GET',
+		      data: {"active": cb.checked ,Id: <%=@supplier.id%> }
+		    });
+		  }
 }
 </script>
 
@@ -61,17 +59,3 @@
    font-size:1.4em;
    }
 </style>
-<script type="text/javascript">
-$(".task-check").bind('change', function(){
-  if (this.checked){
-    $.ajax({
-      url: '/todos/'+this.value+'/toggle',
-      type: 'POST',
-      data: {"completed": this.checked}
-    });
-  }
-  else {
-     alert("no");
-  }
-})
-</script>
