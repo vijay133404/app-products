@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+   <div class ="row">
+      <div class="col-md-2">
+         <h3>Logo</h3>
+      </div>
+      <div class="col-md-10">
+         <p>
+            <strong>Supplier name:</strong>
+            <%= @supplier.supplier_name %>
+         </p>
+      </div>
+   </div>
+   <h3> <strong>Products</strong></h3>
+   <div style="float: right;">
+        <label><input type='checkbox' onclick='handleClick(this);' data-remote="true">show inactive products</label>
+
+   </div>
+   
+                                  
+<script type="text/javascript">
+	function handleClick(cb) {
+		var id = <%=@supplier%>
+  if (cb.checked){
+    $.ajax({
+      url: '/suppliers/active_product',
+      type: 'GET',
+      data: {"inactive": cb.checked ,id}
+    });
+  }
+  else {
+  	$.ajax({
+      url: '/suppliers/active_product',
+      type: 'GET',
+      data: {"active": cb.checked }
+    });
+  }
+}
+</script>
+
+   <div class="row" id="products_listing">
+      <%= render "product_listing" ,products: @supplier.active_product %>
+   </div>
+</div>
+<%= link_to 'Back', suppliers_path %>
+<style type="text/css">
+   .productbox {
+   background-color:#ffffff;
+   padding:10px;
+   margin-bottom:10px;
+   -webkit-box-shadow: 0 8px 6px -6px  #999;
+   -moz-box-shadow: 0 8px 6px -6px  #999;
+   box-shadow: 0 8px 6px -6px #999;
+   }
+   .producttitle {
+   font-weight:bold;
+   padding:5px 0 5px 0;
+   }
+   .pricetext {
+   font-weight:bold;
+   font-size:1.4em;
+   }
+</style>
+<script type="text/javascript">
+$(".task-check").bind('change', function(){
+  if (this.checked){
+    $.ajax({
+      url: '/todos/'+this.value+'/toggle',
+      type: 'POST',
+      data: {"completed": this.checked}
+    });
+  }
+  else {
+     alert("no");
+  }
+})
+</script>

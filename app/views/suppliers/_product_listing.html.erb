@@ -1,0 +1,11 @@
+<%products.each_slice(3) do |product_with_s|%>
+    <div class="row">
+        <%product_with_s.each do |product|%>
+            <div class="col-md-4">
+                <img src="<%= product.default_image%>" class="img-responsive">
+                <div class="producttitle"><%=product.try(:product_title)%></div>
+                
+            </div>
+        <%end%>
+    </div>
+<%end%>

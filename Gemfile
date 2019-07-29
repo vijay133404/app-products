@@ -56,3 +56,5 @@ gem 'devise'
 gem 'cancancan'
 gem 'rolify'
 gem 'bootstrap', '~> 4.0'
+gem 'mini_racer'
+gem "roo"
