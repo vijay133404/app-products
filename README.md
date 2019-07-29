@@ -22,3 +22,14 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+hello
+
+* we defind admin user in seed file.
+* imort link only show admin user.
+
+heroku live url :- https://app-product-supplier.herokuapp.com
+
+admin details:- email:- vmaurya1989@gmail.com  ,password: 12345678
+
+github url:- https://github.com/vijay133404/app-products
